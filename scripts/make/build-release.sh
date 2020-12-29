@@ -148,7 +148,7 @@ build() {
 		GOOS="$os"\
 		VERBOSE="$(( verbose - 1 ))"\
 		OUT="$build_output"\
-		sh ./scripts/go-build.sh\
+		sh ./scripts/make/go-build.sh\
 		;
 
 	log "$build_output"
