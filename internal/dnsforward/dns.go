@@ -41,6 +41,12 @@ func (s *Server) handleDNSRequest(_ *proxy.Proxy, d *proxy.DNSContext) error {
 	ctx.startTime = time.Now()
 
 	type modProcessFunc func(ctx *dnsContext) int
+
+	// Since (*dnsforward.Server).handleDNSRequest(...) is used as
+	// proxy.(Config).RequestHandler, there is no need for additional index
+	// out of range checking in any of the following functions, because the
+	// (*proxy.Proxy).handleDNSRequest method performs it before calling the
+	// appropriate handler.
 	mods := []modProcessFunc{
 		processInitial,
 		processInternalHosts,
@@ -366,8 +372,8 @@ func processFilteringAfterResponse(ctx *dnsContext) int {
 	var err error
 
 	switch res.Reason {
-	case dnsfilter.ReasonRewrite,
-		dnsfilter.DNSRewriteRule:
+	case dnsfilter.Rewritten,
+		dnsfilter.RewrittenRule:
 
 		if len(ctx.origQuestion.Name) == 0 {
 			// origQuestion is set in case we get only CNAME without IP from rewrites table
