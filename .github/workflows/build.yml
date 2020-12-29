@@ -96,7 +96,7 @@
     - 'name': 'Set up Snapcraft'
       'run': 'sudo apt-get -yq --no-install-suggests --no-install-recommends install snapcraft'
     - 'name': 'Run snapshot build'
-      'run': 'make SIGN=0 VERBOSE=1 js-deps js-build build-release'
+      'run': 'make SIGN=0 VERBOSE=2 js-deps js-build build-release'
 
   'docker':
     'runs-on': 'ubuntu-latest'

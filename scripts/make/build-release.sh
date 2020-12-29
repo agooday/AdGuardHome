@@ -7,13 +7,18 @@
 # alike.  Experienced readers may find it overly verbose.
 
 # The default verbosity level is 0.  Show every command that is run if
-# the caller requested verbosity level greater than 0.  Otherwise, do
-# nothing.
+# the caller requested verbosity level greater than 0.  Show the
+# environment if the callre requested verbosity level greater than 1.
+# Otherwise, print nothing.
 #
 # The level of verbosity for the build script is the same minus one
 # level.  See below in build().
 readonly verbose="${VERBOSE:-0}"
-if [ "$verbose" -gt '0' ]
+if [ "$verbose" -gt '1' ]
+then
+	env
+	set -x
+elif [ "$verbose" -gt '0' ]
 then
 	set -x
 fi

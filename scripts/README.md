@@ -37,9 +37,10 @@ Optional environment:
  *  `GO`: set an alternarive name for the Go compiler.
  *  `SIGN`: `0` to not sign the resulting packages, `1` to sign.  The default
     value is `1`.
- *  `VERBOSE`: `1` to be verbose.  This script calls `go-build.sh` with the
-    verbosity level one level lower, so to get verbosity level `2` in
-    `go-build.sh`, set this to `3` when calling `build-release.sh`.
+ *  `VERBOSE`: `1` to be verbose, `2` to also print environment.  This script
+    calls `go-build.sh` with the verbosity level one level lower, so to get
+    verbosity level `2` in `go-build.sh`, set this to `3` when calling
+    `build-release.sh`.
  *  `VERSION`: release version.  Will be set by `version.sh` if it is unset or
     it has the default `Makefile` value of `v0.0.0`.
 
@@ -61,8 +62,8 @@ Optional environment:
  *  `PARALLELISM`: set the maximum number of concurrently run build commands
     (that is, compiler, linker, etc.).
  *  `VERBOSE`: verbosity level.  `1` shows every command that is run and every
-    Go package that is processed.  `2` also shows subcommands.  The default
-    value is `0`, don't be verbose.
+    Go package that is processed.  `2` also shows subcommands and environment.
+    The default value is `0`, don't be verbose.
 
 Required environment:
  *  `CHANNEL`: release channel, see above.
@@ -72,6 +73,9 @@ Required environment:
 
 Optional environment:
  *  `GO`: set an alternarive name for the Go compiler.
+ *  `VERBOSE`: verbosity level.  `1` shows every command that is run and every
+    Go package that is processed.  `2` also shows subcommands and environment.
+    The default value is `0`, don't be verbose.
 
  ###  `go-lint.sh`: Run Backend Static Analyzers
 

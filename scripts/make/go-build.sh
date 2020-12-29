@@ -13,6 +13,7 @@
 verbose="${VERBOSE:-0}"
 if [ "$verbose" -gt '1' ]
 then
+	env
 	set -x
 	readonly v_flags='-v'
 	readonly x_flags='-x'
